@@ -1,0 +1,32 @@
+/*
+Theme Name: WP API Theme
+Theme URI: https://github.com/VCUarts/wp-api-theme
+Description: Super simple theme for WP API data banks
+Author: VCUarts
+Author URI: https://github.com/VCUarts
+Version: 1.0
+License: WTFPL
+License URI: http://sam.zoy.org/wtfpl/
+Are You Serious? Yes.
+*/
+
+body{
+  /*background: Chartreuse;*/
+}
+
+.centered {
+  font-family: 'Montserrat', sans-serif;
+  position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  color: lightgray;
+  font-size: 3em;
+  text-align: center;
+  text-transform: uppercase;
+  
+  /*background: yellow;*/
+  width: 100%;
+
+}

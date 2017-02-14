@@ -1,13 +1,20 @@
 <?php
-if (!function_exists('wp_api_encode_acf')){
+if (!function_exists('wp_rest_api_alter')){
 
-  function wp_api_encode_acf($data,$post,$context){
-    $data['meta'] = array_merge($data['meta'],get_fields($post['ID']));
-    return $data;
-  }
-  
-  if( function_exists('get_fields') ){
-    add_filter('json_prepare_post', 'wp_api_encode_acf', 10, 3);
-  }
-
+function wp_rest_api_alter() {
+  register_api_field( 'post',
+      'fields',
+      array(
+        'get_callback'    => function($data, $field, $request, $type){
+          if (function_exists('get_fields')) {
+            return get_fields($data['id']);
+          }
+          return [];
+        },
+        'update_callback' => null,
+        'schema'          => null,
+      )
+  );
+}
+add_action( 'rest_api_init', 'wp_rest_api_alter');
 }
